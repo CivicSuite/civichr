@@ -1,8 +1,8 @@
 # CivicHR
 
-CivicHR is the CivicSuite internal HR policy support module. Version 0.1.0 ships a local package, FastAPI runtime, deterministic helpers, tests, release gates, public documentation, and browser-verified sample UI for HR policy support without becoming an HRIS.
+CivicHR is the CivicSuite internal HR policy support module. Version 0.1.1 ships a local package, FastAPI runtime, deterministic helpers, tests, release gates, public documentation, and browser-verified sample UI for HR policy support without becoming an HRIS.
 
-## Shipping in v0.1.0
+## Shipping in v0.1.1
 
 - Personnel-policy lookup outlines against HR-approved source titles.
 - Employee handbook plain-language summary drafts.
@@ -22,7 +22,7 @@ CivicHR is the CivicSuite internal HR policy support module. Version 0.1.0 ships
 
 ## Install and run locally
 
-CivicHR v0.1.0 is pinned to `civiccore==0.2.0`.
+CivicHR v0.1.1 is pinned to `civiccore==0.3.0`.
 
 ```bash
 python -m venv .venv

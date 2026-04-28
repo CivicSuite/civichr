@@ -1,4 +1,4 @@
-CivicHR v0.1.0
+CivicHR v0.1.1
 
 CivicHR supports HR policy work without becoming an HRIS. It ships personnel-policy lookup outlines, handbook summaries, job-description drafts, classification references, onboarding and training checklists, intake templates, source review, sensitive-topic preflight, FastAPI endpoints, tests, docs, and browser QA evidence.
 

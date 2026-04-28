@@ -1,7 +1,7 @@
 """FastAPI runtime foundation for CivicHR."""
 
 from civiccore import __version__ as CIVICCORE_VERSION
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
@@ -18,6 +18,12 @@ from civichr.source_review import review_hr_sources
 from civichr.training_requirements import build_training_checklist
 
 app = FastAPI(title="CivicHR", version=__version__, description="Personnel-policy lookup, job-description drafts, onboarding packet checklists, and HR knowledge support for CivicSuite.")
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon() -> Response:
+    """Return an empty favicon response so browser QA has a clean console."""
+
+    return Response(status_code=204)
 
 class PolicyLookupRequest(BaseModel):
     question: str
@@ -52,7 +58,7 @@ class IntakeTemplateRequest(BaseModel):
 
 @app.get("/")
 def root() -> dict[str, str]:
-    return {"name":"CivicHR","version":__version__,"status":"HR policy foundation","message":"CivicHR package, API foundation, personnel-policy lookup outlines, handbook summaries, job-description drafts, classification lookups, onboarding checklists, training references, intake templates, HR source review, sensitive-topic preflight, and public UI foundation are online; HRIS, payroll, benefits administration, personnel-file storage, employment-law advice, autonomous publication, live LLM calls, and external HR system integrations are not implemented yet.","next_step":"Post-v0.1.0 roadmap: HR approval queues, source connectors, and counsel review handoffs"}
+    return {"name":"CivicHR","version":__version__,"status":"HR policy foundation","message":"CivicHR package, API foundation, personnel-policy lookup outlines, handbook summaries, job-description drafts, classification lookups, onboarding checklists, training references, intake templates, HR source review, sensitive-topic preflight, and public UI foundation are online; HRIS, payroll, benefits administration, personnel-file storage, employment-law advice, autonomous publication, live LLM calls, and external HR system integrations are not implemented yet.","next_step":"Post-v0.1.1 roadmap: HR approval queues, source connectors, and counsel review handoffs"}
 @app.get("/health")
 def health() -> dict[str,str]:
     return {"status":"ok","service":"civichr","version":__version__,"civiccore_version":CIVICCORE_VERSION}
