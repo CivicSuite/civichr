@@ -15,5 +15,5 @@ def build_training_checklist(role_title: str, requirements: list[str]) -> Traini
     return TrainingChecklist(
         role_title=role_title.strip(),
         requirements=cleaned or ("Training requirements require HR source review.",),
-        tracking_boundary="Checklist only; CivicHR v0.1.0 does not track completion records.",
+        tracking_boundary="Checklist only; CivicHR v0.1.1 does not track completion records.",
     )

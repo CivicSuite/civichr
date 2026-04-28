@@ -19,5 +19,5 @@ def draft_intake_template(template_type: str) -> IntakeTemplate:
             "Relevant policy or agreement section",
             "Requested next HR review step",
         ),
-        boundary="Template only; CivicHR v0.1.0 does not track cases or recommend outcomes.",
+        boundary="Template only; CivicHR v0.1.1 does not track cases or recommend outcomes.",
     )

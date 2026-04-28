@@ -15,13 +15,13 @@ def test_root_reports_honest_current_state():
 
 def test_health_reports_civiccore_pin():
     payload = client.get("/health").json()
-    assert payload == {"status":"ok","service":"civichr","version":"0.1.0","civiccore_version":"0.2.0"}
+    assert payload == {"status":"ok","service":"civichr","version":"0.1.1","civiccore_version":"0.3.0"}
 
 def test_public_ui_contains_version_boundaries_and_dependency():
     text = client.get("/civichr").text
-    assert "CivicHR v0.1.0" in text
+    assert "CivicHR v0.1.1" in text
     assert "No HRIS" in text
-    assert "civiccore==0.2.0" in text
+    assert "civiccore==0.3.0" in text
 
 def test_api_endpoints_return_deterministic_payloads():
     assert client.post("/api/v1/civichr/policy-lookup", json={"question":"vacation accrual","policy_titles":["Policy 4"]}).status_code == 200

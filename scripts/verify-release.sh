@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "VERIFY-RELEASE: CivicHR v0.1.0"
+echo "VERIFY-RELEASE: CivicHR v0.1.1"
 PYTHON_CANDIDATES=(); [[ -n "${CIVICHR_RELEASE_PYTHON:-}" ]] && PYTHON_CANDIDATES+=("$CIVICHR_RELEASE_PYTHON")
 PYTHON_CANDIDATES+=(python python3 py "/mnt/c/Users/scott/AppData/Local/Microsoft/WindowsApps/python.exe")
 PYTHON_BIN=""
@@ -16,7 +16,7 @@ rm -rf dist
 "$PYTHON_BIN" - <<'PY'
 from pathlib import Path
 import hashlib
-expected={"civichr-0.1.0-py3-none-any.whl","civichr-0.1.0.tar.gz"}
+expected={"civichr-0.1.1-py3-none-any.whl","civichr-0.1.1.tar.gz"}
 dist=Path("dist"); found={p.name for p in dist.iterdir() if p.is_file()}; missing=expected-found
 if missing: raise SystemExit(f"missing artifacts: {sorted(missing)}")
 lines=[]
@@ -26,7 +26,7 @@ print("[PASS] build artifacts and SHA256SUMS")
 PY
 "$PYTHON_BIN" - <<'PY'
 import civichr
-assert civichr.__version__ == "0.1.0"
-print("[PASS] package version 0.1.0")
+assert civichr.__version__ == "0.1.1"
+print("[PASS] package version 0.1.1")
 PY
 echo "VERIFY-RELEASE: PASSED"

@@ -11,7 +11,7 @@ from civichr.training_requirements import build_training_checklist
 
 
 def test_version_is_release_version():
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.1.1"
 
 
 def test_sensitive_review_flags_employment_law_topics():

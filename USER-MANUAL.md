@@ -35,4 +35,4 @@ flowchart LR
   F --> G
 ```
 
-CivicHR depends on `civiccore==0.2.0`. It makes no default outbound calls.
+CivicHR depends on `civiccore==0.3.0`. It makes no default outbound calls.
