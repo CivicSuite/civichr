@@ -1,12 +1,13 @@
 # CivicHR
 
-CivicHR is the CivicSuite internal HR policy support module. Version 0.1.1 ships a local package, FastAPI runtime, deterministic helpers, tests, release gates, public documentation, and browser-verified sample UI for HR policy support without becoming an HRIS.
+CivicHR is the CivicSuite internal HR policy support module. Version 0.1.1 ships a local package, FastAPI runtime, deterministic helpers, optional database-backed HR workpapers, tests, release gates, public documentation, and browser-verified sample UI for HR policy support without becoming an HRIS.
 
 ## Shipping in v0.1.1
 
 - Personnel-policy lookup outlines against HR-approved source titles.
 - Employee handbook plain-language summary drafts.
 - Job-description draft scaffolds from role context.
+- Optional SQLAlchemy-backed job-description and onboarding-packet workpaper records through `CIVICHR_WORKPAPER_DB_URL`.
 - Salary schedule and position-classification reference lookup.
 - Onboarding packet and training requirement checklists.
 - Grievance/complaint intake templates only.
@@ -32,6 +33,8 @@ python -m uvicorn civichr.main:app --host 127.0.0.1 --port 8138
 ```
 
 Open `http://127.0.0.1:8138/civichr` for the browser sample and `http://127.0.0.1:8138/docs` for FastAPI docs.
+
+Set `CIVICHR_WORKPAPER_DB_URL` to persist job-description drafts and onboarding packets. Without it, CivicHR remains deterministic and stateless.
 
 ## Verification
 

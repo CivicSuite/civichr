@@ -4,6 +4,11 @@ All notable changes to CivicHR are documented here. This project follows Keep a 
 
 ## [0.1.1] - 2026-04-28
 
+### Added
+
+- Optional SQLAlchemy-backed job-description and onboarding-packet workpaper records via `CIVICHR_WORKPAPER_DB_URL`.
+- Job-description and onboarding-packet retrieval endpoints for persisted records.
+
 ### Changed
 
 - Dependency-alignment release: moved CivicHR to `civiccore==0.3.0` while preserving the existing v0.1.0 runtime foundation behavior.
