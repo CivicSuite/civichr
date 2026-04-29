@@ -9,7 +9,8 @@ def test_root_reports_honest_current_state():
     payload = client.get("/").json()
     assert payload["name"] == "CivicHR"
     assert payload["version"] == __version__
-    assert payload["status"] == "HR policy foundation"
+    assert payload["status"] == "HR policy foundation plus workpaper persistence"
+    assert "database-backed job/onboarding workpapers" in payload["message"]
     assert "HRIS" in payload["message"]
     assert "not implemented yet" in payload["message"]
 
@@ -25,8 +26,8 @@ def test_public_ui_contains_version_boundaries_and_dependency():
 
 def test_api_endpoints_return_deterministic_payloads():
     assert client.post("/api/v1/civichr/policy-lookup", json={"question":"vacation accrual","policy_titles":["Policy 4"]}).status_code == 200
-    assert client.post("/api/v1/civichr/job-description", json={"title":"Planner I","department":"Planning","duties":["Review permits"]}).json()["not_a_classification_decision"] is True
-    assert client.post("/api/v1/civichr/onboarding-packet", json={"role_title":"Clerk","department":"Admin","required_forms":["I-9"]}).status_code == 200
+    assert client.post("/api/v1/civichr/job-description", json={"title":"Planner I","department":"Planning","duties":["Review permits"]}).json()["draft_id"] is None
+    assert client.post("/api/v1/civichr/onboarding-packet", json={"role_title":"Clerk","department":"Admin","required_forms":["I-9"]}).json()["packet_id"] is None
     assert client.post("/api/v1/civichr/source-review", json={"source_titles":["Handbook"],"approved_by_hr":False}).json()["ready_for_drafting"] is False
     assert client.post("/api/v1/civichr/sensitive-review", json={"topic":"ADA accommodation","context_terms":[]}).json()["safe_for_self_service"] is False
     assert client.post("/api/v1/civichr/handbook-summary", json={"topic":"Leave","source_title":"Handbook","policy_points":["Accrual is monthly."]}).status_code == 200

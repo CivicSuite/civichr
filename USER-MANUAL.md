@@ -2,7 +2,7 @@
 
 ## Non-technical staff guide
 
-CivicHR helps HR staff prepare policy lookup outlines, handbook summaries, job-description drafts, onboarding packets, training checklists, and intake templates. It is not an HRIS and does not make HR decisions.
+CivicHR helps HR staff prepare policy lookup outlines, handbook summaries, job-description drafts, onboarding packets, training checklists, intake templates, and optionally retrieve saved job/onboarding workpapers. It is not an HRIS and does not make HR decisions.
 
 ### What staff can do today
 
@@ -21,6 +21,8 @@ HR and counsel review remain mandatory for HIPAA, FMLA, ADA, union agreement, di
 ## IT and technical guide
 
 Install with `python -m pip install -e ".[dev]"` and run with `python -m uvicorn civichr.main:app --host 127.0.0.1 --port 8138`.
+
+Set `CIVICHR_WORKPAPER_DB_URL` to enable SQLAlchemy-backed job-description and onboarding-packet records. Leave it unset for deterministic stateless operation.
 
 ```mermaid
 flowchart LR
